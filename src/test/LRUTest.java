@@ -33,7 +33,7 @@ class LRUTest {
     @Test
     void get() {
         Integer key = 1;
-        assertEquals(Integer.valueOf(key), key);
+        assertEquals(key, storage.get(key));
     }
 
     @Test
