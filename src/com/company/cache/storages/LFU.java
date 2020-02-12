@@ -41,6 +41,10 @@ public class LFU<K, V> implements Storage<K, V> {
 
     @Override
     public V put(K key, V value) {
+        if (storage.get(key) != null){
+            storage.put(key, value);
+            frequencyIncrement(key); //maybe it is bad idea, because we use get(key,value) in if condition
+        }
         if (storage.size() == MAX_SIZE) {
             eviction();
         }
