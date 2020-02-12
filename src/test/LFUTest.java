@@ -24,15 +24,24 @@ class LFUTest {
     void put() {
         Integer key = 1;
         Integer value = 111;
+        Integer storageSize = storage.size();
         Integer oldValue = storage.put(key, value);
         assertEquals(value, storage.get(key));
         assertEquals(oldValue, Integer.valueOf(1));
+        assertEquals(storageSize, storage.size());
+    }
+    
+    @Test
+    void putNewKey() {
+        Integer key = 5;
+        Integer value = 5;
+        assertEquals(value, storage.get(key));
     }
 
     @Test
     void get() {
         Integer key = 1;
-        assertEquals(Integer.valueOf(key), key);
+        assertEquals(key, storage.get(key));
     }
 
     @Test
